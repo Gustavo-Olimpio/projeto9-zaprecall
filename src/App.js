@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Titulo from './Titulo'
+import Rodape from './Rodape'
+import ListaPerguntas from './ListaPerguntas'
+import GlobalStyle from './GlobalStyle'
+import styled from 'styled-components'
+
+const [pergunta,setPergunta] = useState(false)
+const [questao,setQuestao] = useState(true)
+const [resposta,setResposta] = useState(true)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div>
+    <GlobalStyle />
+    <DivMain>
+    <Titulo />
+    <ListaPerguntas />
+    </DivMain>
+    <Rodape />
+  </div>
+  )
 }
 
 export default App;
+
+const DivMain = styled.div `
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+`
