@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-function Rodape(){
+function Rodape(props){
     return(
         <DivFooter>
-            <p>0/4 concluidas</p>
+            <p>{props.cont}/{props.tamanho} concluidas</p>
         </DivFooter>
     )
 }

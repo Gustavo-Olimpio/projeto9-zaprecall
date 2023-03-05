@@ -3,20 +3,24 @@ import Rodape from './Rodape'
 import ListaPerguntas from './ListaPerguntas'
 import GlobalStyle from './GlobalStyle'
 import styled from 'styled-components'
+import {useState} from "react"
+import cards from './cards'
 
-const [pergunta,setPergunta] = useState(false)
-const [questao,setQuestao] = useState(true)
-const [resposta,setResposta] = useState(true)
+
 
 function App() {
+  
+  const [cont, setCont] = useState(0);
+
+
   return (
   <div>
     <GlobalStyle />
     <DivMain>
     <Titulo />
-    <ListaPerguntas />
+    <ListaPerguntas cont={cont} setCont={setCont} />
     </DivMain>
-    <Rodape />
+    <Rodape cont={cont} tamanho={cards.length}/>
   </div>
   )
 }
@@ -24,6 +28,7 @@ function App() {
 export default App;
 
 const DivMain = styled.div `
+  width:100%;
   display:flex;
   flex-direction:column;
   justify-content:center;
