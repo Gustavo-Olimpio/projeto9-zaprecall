@@ -8,6 +8,7 @@ function Perguntas(props){
     const [risco,setRisco] = useState("");
     const [icone,setIcone] = useState("assets/seta_play.png");
     const [desabilita,setDesabilita] = useState("");
+    const [dataTest,setDataTest] = useState("play-btn");
     
 
     function clickPerguntas(indice){
@@ -24,6 +25,7 @@ function Perguntas(props){
         setIcone("assets/icone_erro.png")
         setDesabilita("none")
         props.setCont(props.cont+1)
+        setDataTest("no-icon")
     }
     function qnl(){
         setJaTem()
@@ -33,6 +35,7 @@ function Perguntas(props){
         setIcone("assets/icone_quase.png")
         setDesabilita("none")
         props.setCont(props.cont+1)
+        setDataTest("partial-icon")
     }
     function zap(){
         setJaTem()
@@ -42,38 +45,39 @@ function Perguntas(props){
         setIcone("assets/icone_certo.png")
         setDesabilita("none")
         props.setCont(props.cont+1)
+        setDataTest("zap-icon")
     }
 
     
     
     
     return(
-        <div>
+        <div data-test="flashcard">
            
             <DivPerguntas  i={props.i} jaTem={jaTem} cor={cor} risco={risco} desabilita={desabilita}>
-                <p>Pergunta {props.i+1}</p>
-                <img onClick={() => clickPerguntas(props.i)} src={icone} alt="seta"/>
+                <p data-test="flashcard-text">Pergunta {props.i+1}</p>
+                <img data-test={dataTest} onClick={() => clickPerguntas(props.i)} src={icone} alt="seta"/>
             </DivPerguntas>
              
             
             <DivQuestao  i={props.i} jaTem={jaTem} jaResposta={jaResposta}>
-                <p>{props.question}</p>
-                <img onClick={() => clickRespostas(props.i)} src="assets/seta_virar.png" alt="seta"/>
+                <p data-test="flashcard-text">{props.question}</p>
+                <img data-test="turn-btn" onClick={() => clickRespostas(props.i)} src="assets/seta_virar.png" alt="seta"/>
             </DivQuestao>
            
             <DivResposta i={props.i} jaResposta={jaResposta}>
-                <p>{props.answer}</p>
+                <p data-test="flashcard-text">{props.answer}</p>
                 <DivBotoes>
-                    <div onClick={nl}>
+                    <div data-test="no-btn" onClick={nl}>
                         <p>Não</p> 
                         <p>lembrei</p>
                     </div>
-                    <div onClick={qnl}>   
+                    <div data-test="partial-btn" onClick={qnl}>   
                         <p>Quase não</p> 
                         <p>lembrei</p>
 
                     </div>
-                    <div onClick={zap} >Zap!</div>
+                    <div data-test="zap-btn" onClick={zap} >Zap!</div>
                 </DivBotoes>
             </DivResposta>
             

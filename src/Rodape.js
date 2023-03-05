@@ -3,7 +3,9 @@ import styled from 'styled-components'
 function Rodape(props){
     return(
         <DivFooter>
+            <div data-test="footer" >
             <p>{props.cont}/{props.tamanho} concluidas</p>
+            </div>
         </DivFooter>
     )
 }
